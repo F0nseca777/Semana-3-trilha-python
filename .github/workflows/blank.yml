@@ -1,0 +1,50 @@
+import random
+
+class Academia:
+    def __init__(self, musculo):
+        self.musculo = musculo.lower()
+        self.exercicios = {
+            'peito': ['supino', 'voador', 'supino inclinado', 'cross over'],
+            'costas': ['remada curvada', 'barra fixa', 'puxada alta', 'pull over'],
+            'braco': ['rosca direta', 'triceps testa', 'rosca scott', 'triceps frances'],
+            'perna': ['agachamento', 'stiff', 'deadlift', 'extensora', 'panturrilha'],
+            'abdomem': ['abdominal infra', 'abdominal supra', 'abdominal maquina']
+        }
+
+    def treinar(self):
+        if self.musculo in self.exercicios:
+            exercicios = self.exercicios[self.musculo]
+            return f"Vamos fazer os seguintes exercícios para treinar {self.musculo}: {', '.join(exercicios)}."
+        else:
+            return f"Não há exercícios cadastrados para o músculo {self.musculo}."
+
+# Exemplo de uso da classe Academia:
+academia_peito = Academia("peito")
+print(academia_peito.treinar())
+
+
+
+class Revezar:
+    def __init__(self, numero_pessoas):
+        self.numero_pessoas = numero_pessoas
+        self.verificar_aparelho()
+
+    def verificar_aparelho(self):
+        if self.numero_pessoas > 1:
+            print('Tem muita gente, melhor trocar de aparelho!')
+        elif self.numero_pessoas == 0:
+            print('Opa, tá vazio!!! Hora de malhar.')
+        elif self.numero_pessoas == 1:
+            print('Eita, tem alguém no aparelho, vou perguntar se posso revezar.')
+            chance = random.randint(0, 1)
+            if chance == 0:
+                print('Opa, o outro aluno deixou, que cara maneiro!')
+            else:
+                print('Nossa, ele não deixou revezar. É um mal amado!')
+        else:
+            print('Retorne um número válido de pessoas.')
+
+# Exemplo de uso da classe Revezar:
+revezar1 = Revezar(1)
+revezar2 = Revezar(3)
+revezar3 = Revezar(0)
